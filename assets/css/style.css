@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 
-/*-------------------- Special paddings/margins/text */
+/*----------------------------------------------- Special paddings/margins/text */
 *{
     margin: 0;
     padding: 0;
@@ -8,17 +8,21 @@
     font-family: Rubik, sans-serif;
 }
 
-/*-------------------- Body */
+/*----------------------------------------------- Body */
 
 body {
     background-color: #e6d7ff;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
-/*-------------------- Nav */
+/*----------------------------------------------- Nav */
 
 .navbar-brand {
     font-weight: 900;
-    font-size: 3em;
+    font-size: 2em;
 }
 
 .navbar-nav li {
@@ -29,4 +33,86 @@ nav {
     background: #e1c4ff;
     border-bottom: solid 3px #d2afff;
     box-shadow: 0 6px 10px rgba(0,0,0,0.1);
+}
+
+.navbar-toggler {
+    background-color: #d2afff;
+    padding: 0.5em;
+    margin-left: 3em;
+}
+
+/*----------------------------------------------- Game Area / Cards */
+
+.game-wrapper {
+    background-color: azure;
+    border-radius: 10px;
+    margin-top: 2em;
+    padding: 1em;
+    min-height: 100vh;
+    min-width: 100vh;
+}
+
+.fa-star {
+    color: #d2afff;
+    font-size: 3em;
+}
+
+i .fa-star {
+    justify-content: center;
+}
+
+.card, .card-front, .card-back, img {
+    max-width: 100px;
+    max-height: 100px;
+}
+
+.cards {
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    background-color: white;
+}
+
+.cards, .card, .card-area {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    border: solid 1px black;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    transition: transform 0.25s linear;
+    backface-visibility: hidden;
+    position: absolute;
+}
+
+.cards .card {
+    height: calc(100% / 4 - 10px);
+    width: calc(100% / 4 - 10px);
+    position: relative;
+    /*perspective: 800px; /* not sure if needed */
+    /*transform-style: preserve-3d; /*and this line */
+}
+
+.card-holder {
+    padding-left: 0;
+}
+
+ul .cards .card-holder {
+    height: 5em;
+    width: 5em;
+}
+
+.card .card-back {
+    transform: rotateY(-180deg)
+}
+
+.card:hover .card-front {
+    transform: rotateY(180deg);
+}
+
+.card:hover .card-back {
+    transform: rotateY(0);
 }
