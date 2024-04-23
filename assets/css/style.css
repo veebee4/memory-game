@@ -11,12 +11,12 @@
 /*----------------------------------------------- Body */
 
 body {
-    background-color: #e6d7ff;
     display: flex;
     align-items: center;
+    justify-content: center;
     flex-direction: column;
-    min-height: 100vh;
-}
+    background: #e7d1ff;
+  }
 
 /*----------------------------------------------- Nav */
 
@@ -44,75 +44,79 @@ nav {
 /*----------------------------------------------- Game Area / Cards */
 
 .game-wrapper {
-    background-color: azure;
-    border-radius: 10px;
-    margin-top: 2em;
-    padding: 1em;
-    min-height: 100vh;
-    min-width: 100vh;
-}
-
-.fa-star {
-    color: #d2afff;
-    font-size: 3em;
-}
-
-i .fa-star {
-    justify-content: center;
-}
-
-.card, .card-front, .card-back, img {
-    max-width: 100px;
-    max-height: 100px;
-}
-
-.cards {
-    height: 100%;
-    width: 100%;
-    justify-content: center;
-    background-color: white;
-}
-
-.cards, .card, .card-area {
+    width: 20em;
+    height: 20em;
+    margin: auto;
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-evenly;
-    height: 100%;
-    width: 100%;
+    background-color: azure;
     border-radius: 10px;
-    border: solid 1px black;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-    transition: transform 0.25s linear;
-    backface-visibility: hidden;
-    position: absolute;
-}
+    margin-top: 3em;
+    padding: 1em;
+    box-shadow: 0 20px 30px rgba(0,0,0,0.1);
+    perspective: 1000px;
+    
+  }
 
-.cards .card {
+  .card {
     height: calc(100% / 4 - 10px);
     width: calc(100% / 4 - 10px);
+    margin: 5px;
+    box-shadow: 1px 1px 1px rgba(0,0,0,0.3);
     position: relative;
-    /*perspective: 800px; /* not sure if needed */
-    /*transform-style: preserve-3d; /*and this line */
-}
+    transform: scale(1);
+    cursor: pointer;
+    user-select: none;
+    transform-style: preserve-3d;
+    transition: .5s;
+  }
 
-.card-holder {
-    padding-left: 0;
-}
+  .card:active {
+    transform: scale(0.85);
+    transition: transform .2s;
+  }
 
-ul .cards .card-holder {
-    height: 5em;
-    width: 5em;
-}
+  .card-front, .card-back {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    padding: 0.25em;
+    backface-visibility: hidden;
+  }
 
-.card .card-back {
-    transform: rotateY(-180deg)
-}
-
-.card:hover .card-front {
+  .card.flip {
     transform: rotateY(180deg);
-}
+  }
 
-.card:hover .card-back {
-    transform: rotateY(0);
-}
+  .card-front {
+    transform: rotateY(180deg);
+  }
+
+  /*----------------------------------------------- Game Area / Controls */
+
+  .control-area {
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .timer, .flips {
+    text-align: center;
+  }
+
+  button {
+    border-radius: 10px;
+  }
+
+  .reset, .difficulty, .dark-light-mode {
+    margin: 0.5em;
+    padding: 0.5em;
+    background-color: #d2afff;
+  }
+
+  .reset:hover, .difficulty:hover, .dark-light-mode:hover {
+    background-color: #e6d7ff;
+  }
+
+  /*----------------------------------------------- Media Queries */
+
